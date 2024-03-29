@@ -1,0 +1,31 @@
+.wrapper{
+    /* border: 2px solid yellowgreen; */
+    width: 100%;
+    /* margin: 0 auto; */
+}
+
+.search-bar{
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 20vh;
+    margin-bottom: 20px;
+}
+
+input{
+    border-radius: 20px;
+    border: none;
+    font-size: 1.25rem;
+    width: 100%;
+    padding: 15px;
+    background-color: grey;
+    color: white;
+    /* margin-left: 5px; */
+}
+
+input:focus{
+    outline: none;
+}
+
+.search-result{
+    margin-left: 3.5rem;
+}

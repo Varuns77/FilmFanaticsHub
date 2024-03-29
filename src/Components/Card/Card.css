@@ -1,0 +1,53 @@
+.cards {
+    display: inline-block;
+    transition: transform .2s;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.19rem;
+    cursor:pointer;
+    min-width:250px;
+    height:350px;
+    z-index:0;
+    border: 1px solid yellow;
+}
+
+.cards:hover {
+    transform: scale(1.2);
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/* .cards__img {
+    height: 300px;
+    width: 250px;
+    object-fit: fill;
+} */
+
+.res-card{
+    width: 250px;
+    border-radius: 2%;
+    margin: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.res-card:hover {
+    transform: scale(1.05);
+    /* color: aqua; */
+    /* background-color: aquamarine; */
+    /* z-index: 1000; */
+    /* box-shadow: rgba(225, 214, 214, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+}
+
+.res-logo{
+    width: 100%;
+    border-radius: 5%;
+}
+
+.movie-details{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: .5rem 5px;
+}
+

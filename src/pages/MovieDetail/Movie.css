@@ -1,0 +1,158 @@
+.movie {
+    min-width: 100%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.movie-intro {
+    width: 100%;
+}
+
+ .movie-backdrop {
+    width: 100%;
+    height: 600px;
+    object-fit:cover;
+    object-position: 0 3%;
+}
+
+
+.movie-detail {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 75%;
+    min-width: 25%;
+    bottom: 225px;
+    background-color: #31363F;
+    border-radius: 4%;
+    opacity: 0.9;
+}
+
+.movie-posterBox{
+    margin-right: 15px;
+}
+
+.movie-detailLeft {
+    margin-right: 30px;
+}
+
+.movie-poster {
+    width:300px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.86) 0px 22px 40px 6px;
+}
+
+.movie-detailRight {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    margin-right: 1rem;
+    justify-content:space-between ;
+}
+
+/* .movie-detailRightTop {
+    margin-top: 10px;
+    margin-bottom: 16px;
+} */
+
+
+.movie-detailRightTop > :not(.movie-name){
+    text-shadow: 0px 0px 5px #000000;
+    margin-bottom: .4rem;
+}
+
+.movie-tagline{
+    color: lightgray;
+    font-style: italic;
+}
+
+.movie-name {
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.movie-voteCount {
+    margin-left: 1rem;
+}
+
+.movie-genres {
+   margin-block: 10px;
+   display: flex;
+   flex-wrap: wrap;
+   /* gap: 5px; */
+}
+
+.movie-genre {
+    padding: .5rem;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin-right: 1rem;
+}
+
+.movie-detailRightBottom {
+    flex: 0.8;
+}
+
+.synopsisText {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+    word-wrap: break-word;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.synopsisText > div:last-of-type {
+    margin-left: auto;
+}
+
+.cast-details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 120px;
+    gap: 15px;
+}
+
+.more-details{
+    
+    position: relative;
+    bottom: 200px;
+    width: 75%;
+
+}
+
+.movie-details
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.movie-details .status .runtime .release-date > p
+{
+    text-align: center;
+}
+
+.video{
+    position: relative;
+    bottom: 180px;
+    
+}
+
+.video h1{
+    text-align: center;
+    margin-block: 20px;
+}
+
+.similar-movies h1{
+    text-align: center;
+    margin-bottom: 20px;
+}

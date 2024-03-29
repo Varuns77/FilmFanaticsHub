@@ -1,0 +1,58 @@
+.movie-cards {
+  /* padding: 0 3rem 3rem 3rem;
+    padding-inline: 20px;
+    white-space: nowrap;
+    overflow: auto;
+    width: 94%;
+    margin: auto; */
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.type-title {
+  font-size: 1.75rem;
+  /* margin:  1.5rem; */
+  margin-inline-start: 2.7rem;
+  margin-block-start: 2rem;
+  /* background: #42d392; */
+  background: linear-gradient(180deg, #42d392, #647eff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* margin-block-end: 1rem; */
+  /* margin-block: 1.5rem; */
+}
+
+.movie-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  width: 94%;
+  align-self: center;
+  /* margin: 0 auto; */
+  /* padding: 0 3rem 3rem 3rem; */
+  /* padding-inline: 20px; */
+  /* justify-content: center; */
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-title {
+  font-size: 1.75rem;
+  margin: 1.5rem;
+  text-align: center;
+  background: #42d392;
+  background: linear-gradient(180deg, #42d392, #647eff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.list-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
