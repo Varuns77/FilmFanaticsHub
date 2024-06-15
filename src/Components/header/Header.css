@@ -8,13 +8,24 @@
     padding-inline: 10px;
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     position: sticky;
     top: 0;
     z-index: 10;
 }
 
-a > span{
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+}
+
+a > span {
     margin: 0 30px;
     font-size: 1.3rem;
     font-weight: 550;
@@ -29,7 +40,7 @@ a > span:hover {
     color: white;
 }
 
-.headerLeft .logo{
+.headerLeft .logo {
     background: #42d392;
     background: linear-gradient(135deg, #42d392, #647eff);
     -webkit-background-clip: text;
@@ -40,3 +51,61 @@ a > span:hover {
     font-style: normal;
 }
 
+@media (max-width: 768px) {
+
+
+    .header{
+        flex-direction: row;
+        /* justify-content: space-between; */
+        /* justify-content: space-evenly; */
+        align-items: flex-start;
+        padding: 0.9rem;
+        /* background-color: antiquewhite; */
+        /* display: flex; */
+      
+    }
+
+    .hamburger {
+        display: block;
+        /* display: flex; */
+        color: #647eff;
+        /* flex-direction: ; */
+        /* align-items: flex-end; */
+    }
+
+    .hamburger i {
+        /* display: flex; */
+        /* flex-direction: row; */
+        /* color: yellow; */
+        /* border: 1px solid red; */
+        /* flex-direction: column; */
+    }
+
+    .headerRight {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        
+    }
+
+    .headerRight.open {
+        display: flex;
+        border: 1px solid white;
+    }
+
+    .headerRight a > span {
+        margin: 10px 0;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .headerRight a > span {
+        margin: 8px 0;
+        font-size: 1rem;
+    }
+
+    .headerLeft .logo {
+        font-size: 1rem;
+    }
+}

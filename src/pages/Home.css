@@ -57,3 +57,95 @@
     margin-left: 4px;
     color: yellow;
 }
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .posterImage-title {
+        font-size: 3rem;
+    }
+
+    .posterImage-runtime {
+        font-size: 1.5rem;
+    }
+
+    .posterImage-rating {
+        margin-left: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .posterImage {
+        height: 50vh; /* Adjust height for smaller screens */
+    }
+
+    .posterImage-overlay {
+        padding: 3rem;
+    }
+
+    .posterImage-title {
+        font-size: 2.5rem;
+    }
+
+    .posterImage-runtime {
+        font-size: 1.25rem;
+    }
+
+    .posterImage-description {
+        font-size: 0.875rem;
+        width: 60%; /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .posterImage {
+        height: 40vh; /* Adjust height for tablets */
+    }
+
+    .posterImage-overlay {
+        padding: 2rem;
+    }
+
+    .posterImage-title {
+        font-size: 2rem;
+    }
+
+    .posterImage-runtime {
+        font-size: 1rem;
+    }
+
+    .posterImage-description {
+        font-size: 0.75rem;
+        width: 70%; /* Adjust width for tablets */
+    }
+
+    .posterImage-rating {
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .posterImage {
+        height: 30vh; /* Adjust height for mobile devices */
+    }
+
+    .posterImage-overlay {
+        padding: 1rem;
+    }
+
+    .posterImage-title {
+        font-size: 1.5rem;
+    }
+
+    .posterImage-runtime {
+        font-size: 0.875rem;
+    }
+
+    .posterImage-description {
+        font-size: 0.625rem;
+        width: 80%; /* Adjust width for mobile devices */
+    }
+
+    .posterImage-rating {
+        margin-left: 0.5rem;
+    }
+}

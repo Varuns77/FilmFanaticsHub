@@ -6,6 +6,7 @@ import "./Home.css";
 import MovieList from "../Components/MovieList/MovieList";
 import { ThreeDots } from 'react-loader-spinner'
 import Loader from "../Components/Loader/Loader";
+import Header from "../Components/header/Header";
 
 function Home() {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -47,6 +48,7 @@ function Home() {
       <Loader />
       ) : (
     <>
+      <Header />
       <div className="poster">
         <Carousel
           showThumbs={false}

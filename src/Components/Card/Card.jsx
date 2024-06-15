@@ -48,14 +48,14 @@ function Card({ movie }) {
             />
 
             <div className="card-content">
-                <h3 style={{textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden", padding: "5px"}} >{movie ? movie.original_title : ""}</h3>
+                <h3 className="movie-title">{movie ? movie.original_title : ""}</h3>
                 {
                                 <p style={{fontSize: ".8rem",  padding: "5px"}}>{genres.map((genre) => genre.name).join(', ')}</p>
                 }
                 
-                <div className="movie-details">
+                <div className="card-movie-details">
                   <p style={{fontSize: ".8rem"}}>{movie.release_date.length !== 0 ? formatDate(movie.release_date) : ""}</p>    
-                    <span style={{fontSize: ".8rem"}} className="card__rating">
+                    <span className="card__rating">
                   {movie ? movie.vote_average.toFixed(1) : ""}
                   <i style={{paddingLeft: "2px", color: "yellow"}} className="fas fa-star" />
                 </span>

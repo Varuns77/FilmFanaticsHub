@@ -81,7 +81,7 @@ const Movie = () => {
                     <div className="movie-detailRightTop">
                         <div className="movie-name">{currentMovieDetail ? currentMovieDetail.original_title : ""}</div>
                         <div className="movie-tagline">{currentMovieDetail ? currentMovieDetail.tagline : ""}</div>
-                        <div className="movie-rating" style={{fontSize: "25px"}}>
+                        <div className="movie-rating" >
                             {currentMovieDetail ? currentMovieDetail.vote_average.toFixed(1): ""} <i style={{color: "yellow"}} class="fas fa-star" />
                             <span className="movie-voteCount">{currentMovieDetail ? "(" + currentMovieDetail.vote_count + ") votes" : ""}</span>
                         </div>  
@@ -99,7 +99,7 @@ const Movie = () => {
                     </div>
                     <div className="movie-detailRightBottom">
                         <div className="synopsisText">Overview</div>
-                        <div>{currentMovieDetail ? currentMovieDetail.overview : ""}</div>
+                        <div className="synopsis">{currentMovieDetail ? currentMovieDetail.overview : ""}</div>
                     </div>
                     
                 </div>
