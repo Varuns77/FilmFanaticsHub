@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './SearchBar.css'
 import Card from '../Card/Card';
+import Header from '../header/Header';
 // import {FaSearch} from "react-icons/fa"
 
 function SearchBar() {
@@ -34,6 +35,7 @@ function SearchBar() {
     
   return (
     <>
+    <Header />
     <div className='wrapper'>
         <div className="search-bar">
             <input type="text" placeholder='Enter Movie Name' value={input} onChange={(e) => handleChange(e.target.value)}/>

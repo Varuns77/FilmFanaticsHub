@@ -5,6 +5,7 @@ import Cast from "../../Components/Cast/Cast";
 import YouTube from 'react-youtube';
 import SimilarMovies from "../../Components/SimilarMovies/SimilarMovies";
 import Loader from "../../Components/Loader/Loader";
+import Header from "../../Components/header/Header";
 
 const Movie = () => {
 
@@ -67,6 +68,7 @@ const Movie = () => {
             <Loader />
         ): (
         <>
+        <Header />
         <div className="movie">
             <div className="movie-intro">
                 <img className="movie-backdrop" src={`https://image.tmdb.org/t/p/original${currentMovieDetail ? currentMovieDetail.backdrop_path : ""}`} />
