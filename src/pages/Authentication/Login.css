@@ -4,6 +4,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url("../../assets/movie-background-collage(1).jpg");
+    background-position: 15%;
+    background-repeat: no-repeat;
+    /* background-size: 100% 100%; 
+    min-height: 100vh; */
+    background-size: cover;
 }
 
 .form-container {
@@ -54,6 +60,7 @@
     background-color: #222831;;
     padding: 0.75rem 1rem;
     color: rgba(243, 244, 246, 1);
+    font-size: 1.1rem;
   }
   
   .input-group input:focus {
@@ -112,3 +119,46 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  /* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .authform {
+      padding: 1rem;
+  }
+
+  .form-container {
+      padding: 1.5rem;
+  }
+
+  .title {
+      font-size: 1.25rem;
+  }
+
+  .input-group input {
+      font-size: 1rem;
+      padding: 0.5rem 0.75rem;
+  }
+
+  .sign {
+      padding: 0.5rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  
+  .form-container {
+      max-width: 300px;
+      padding: 1rem;
+  }
+
+  .input-group input {
+      font-size: 0.875rem;
+      padding: 0.5rem;
+  }
+
+  .sign {
+      padding: 0.5rem;
+      font-size: 0.875rem;
+  }
+}

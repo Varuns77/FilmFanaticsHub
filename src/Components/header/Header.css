@@ -51,6 +51,7 @@ a > span:hover {
     font-style: normal;
 }
 
+
 @media (max-width: 768px) {
 
 
@@ -62,11 +63,13 @@ a > span:hover {
         padding: 0.9rem;
         /* background-color: antiquewhite; */
         /* display: flex; */
-      
+        
     }
-
+    
     .hamburger {
         display: block;
+        margin-top: 12px;
+        
         /* display: flex; */
         color: #647eff;
         /* flex-direction: ; */
@@ -82,15 +85,20 @@ a > span:hover {
     }
 
     .headerRight {
+        /* display: flex; */
         flex-direction: column;
         width: 100%;
         display: none;
+        
         
     }
 
     .headerRight.open {
         display: flex;
-        border: 1px solid white;
+        flex-direction: column;
+        transition: all 0.3s linear;
+        transform-origin: 1px;
+        /* border: 1px solid white; */
     }
 
     .headerRight a > span {

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import "./MovieList.css"
 import { useParams } from "react-router-dom"
 import Card from "../Card/Card"
+import Header from "../header/Header"
 
 
 const MovieList = ({category}) => {
@@ -44,6 +45,8 @@ const MovieList = ({category}) => {
                     }
                 </div>
             </div> : 
+            <>
+            <Header />
             <div className="movie-list">
                 <h2 className="list-title">{(type ? type : category).toUpperCase().replace(/_/g, " ")}</h2>
                 <div className="list-cards">
@@ -53,7 +56,8 @@ const MovieList = ({category}) => {
                         ))
                     }
                 </div>
-        </div>}
+            </div>
+            </>}
         </div>
         
         </>

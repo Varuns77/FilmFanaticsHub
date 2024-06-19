@@ -143,6 +143,10 @@
     .posterImage-description {
         font-size: 0.625rem;
         width: 80%; /* Adjust width for mobile devices */
+        /* height: 50%; */
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .posterImage-rating {

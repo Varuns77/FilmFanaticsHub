@@ -38,7 +38,7 @@ function Login() {
         Submit
     </button>
    </form> */}
-    <div className="authform">
+<div className="authform">
    <div class="form-container">
 	<p class="title">Login</p>
 	<form className="form" onSubmit={handleSubmit}>

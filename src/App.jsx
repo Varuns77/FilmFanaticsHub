@@ -1,15 +1,16 @@
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom"
-import Header from './Components/header/Header'
+// import Header from './Components/header/Header's
 import Home from './pages/Home'
 import MovieList from './Components/MovieList/MovieList'
 import Movie from './pages/MovieDetail/Movie'
-import Search from './pages/Search/Search'
+// import Search from './pages/Search/Search'
 import Home2 from "./pages/Home2"
 import Login from "./pages/Authentication/Login"
 import Register from "./pages/Authentication/Register"
 import { useEffect, useState } from "react"
 import { auth } from './Components/Firebase/firebase';
 import { ToastContainer } from "react-toastify"
+import SearchBar from "./Components/SearchBar/SearchBar"
 
 function App() {
 
@@ -26,13 +27,13 @@ function App() {
       <Router>
         
         <Routes>
-          <Route index element={user? <Navigate to="/home" /> : <Login />}/>
+          <Route path="/" element={user? <Navigate to="/home" /> : <Login />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/home" element={<Home />}/>
           <Route path="movie/:id" element={<Movie />}/>
           <Route path="movies/:type" element={<MovieList/> }/>
-          <Route path="search" element={<Search />} />
+          <Route path="/search" element={<SearchBar />} />
         </Routes>
       </Router>
         <ToastContainer />

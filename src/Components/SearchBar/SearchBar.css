@@ -11,21 +11,33 @@
     margin-bottom: 20px;
 }
 
-input{
-    border-radius: 20px;
-    border: none;
+.search-bar input{
+    /* border-radius: 20px; */
+    /* border: none; */
     font-size: 1.25rem;
-    width: 100%;
-    padding: 15px;
-    background-color: grey;
-    color: white;
+    /* width: 100%; */
+    /* padding: 15px; */
+    /* background-color: grey; */
+    /* color: white; */
     /* margin-left: 5px; */
+
+    width: 100%;
+    border-radius: 0.375rem;
+    border: 1px solid rgb(101, 190, 210);
+    outline: 0;
+    background-color: #222831;;
+    padding: 0.75rem 1rem;
+    color: rgba(243, 244, 246, 1);
 }
 
 input:focus{
     outline: none;
+    background-color: #353d49;;
 }
 
 .search-result{
     margin-left: 3.5rem;
+    margin-top: 3.5rem;
+    display: flex;
+    flex-wrap: wrap;
 }
