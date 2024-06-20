@@ -51,7 +51,11 @@ function Home() {
       <Header />
       <div className="poster">
         <Carousel
-          
+          showThumbs={false}
+          autoPlay={true}
+          transitionTime={3}
+          infiniteLoop={true}
+          showStatus={false}
         >
           {popularMovies.map((movie) => (
             <Link
