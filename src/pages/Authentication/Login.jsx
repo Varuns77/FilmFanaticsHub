@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Login.css'
 import {auth} from '../../Components/Firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
@@ -10,10 +11,12 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const navigate = useNavigate();
+
         try{
             await signInWithEmailAndPassword(auth, email, password)
             console.log("User Logged In Successfully");
-            window.location.href="/home";
+            navigate("/home");
         }
         catch(error){
             console.log(error.message);
