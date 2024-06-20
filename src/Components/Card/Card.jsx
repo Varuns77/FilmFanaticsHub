@@ -50,7 +50,7 @@ function Card({ movie }) {
             <div className="card-content">
                 <h3 className="movie-title">{movie ? movie.original_title : ""}</h3>
                 {
-                                <p style={{fontSize: ".8rem",  padding: "5px"}}>{genres.map((genre) => genre.name).join(', ')}</p>
+                                <p className="card-movie-genres">{genres.map((genre) => genre.name).join(', ')}</p>
                 }
                 
                 <div className="card-movie-details">

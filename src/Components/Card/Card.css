@@ -51,12 +51,36 @@
     margin: .5rem 5px;
 }
 
+.card-movie-genres{
+  font-size: .8rem;
+  padding: 5px;
+}
+
 /* Responsive styles */
 
 /* For tablets and larger devices */
-@media (min-width: 400px) {
+@media (max-width: 400px) {
     .res-card {
       max-width: 200px;
+    }
+
+    .card__rating{
+      font-size: 13px;
+    }
+
+    .movie-title {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      /* padding: 5px; */
+    }
+
+    .card-movie-genres {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: .8rem;
+      padding: 5px;
     }
   }
   

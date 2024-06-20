@@ -9,6 +9,7 @@ import Login from "./pages/Authentication/Login"
 import Register from "./pages/Authentication/Register"
 import { useEffect, useState } from "react"
 import { auth } from './Components/Firebase/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import { ToastContainer } from "react-toastify"
 import SearchBar from "./Components/SearchBar/SearchBar"
 
@@ -17,10 +18,23 @@ function App() {
   const[user, setUser] = useState();
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      console.log(user);
-      setUser(user);
-    })
+    // auth.onAuthStateChanged((user) => {
+    //   console.log(user);
+    //   setUser(user);
+    // })
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        setUser(user);
+      } else {
+        // User is signed out
+        setUser(null);
+      }
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
   })
 
   return (
@@ -28,7 +42,7 @@ function App() {
       <Router>
         
         <Routes>
-          <Route path="/" element={user? <Navigate to="/home" /> : <Login />}/>
+          <Route path="/" element={<Login />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/home" element={<Home />}/>
