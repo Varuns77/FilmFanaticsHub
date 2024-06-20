@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { auth, db } from '../../Components/Firebase/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
 
@@ -10,6 +11,7 @@ function Register() {
     const [password, setPassword] = useState("")
     const [fname, setFname] = useState("")
     const [lname, setLname] = useState("");
+    const navigate = useNavigate();
 
     const notify = () => toast.error("error.message");
 
@@ -30,7 +32,7 @@ function Register() {
             // toast.success("User is registered successfully", {
             //     position: "top-center",
             // })
-            window.location.href="/login";
+            navigate("/login");
             // notify();
             
         }

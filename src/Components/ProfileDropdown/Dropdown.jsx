@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './Dropdown.css'
 import { auth, db } from '../../Components/Firebase/firebase';
 import {doc, getDoc} from "firebase/firestore"
+import { useNavigate } from 'react-router-dom';
 
 function Dropdown() {
     const [isHovered, setIsHovered] = useState(false);
-
     const [userDetails, setUserDetails] = useState(null);
+    const navigate = useNavigate()
 
 
   const fetchUserData = async() => {
@@ -28,7 +29,7 @@ function Dropdown() {
     try{
 
       await auth.signOut;
-      window.location.href = "/login";
+      navigate("/login");
       console.log("User logged out successfully");
     }
     catch(error){
