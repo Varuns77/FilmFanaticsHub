@@ -48,7 +48,7 @@ function Dropdown() {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="profile-name">
-        <h4 className="user-name">{userDetails ? userDetails.firstName : "NOT"}</h4>
+        <h4 className="user-name">{userDetails ? userDetails.firstName : ""}</h4>
         <span className="arrow">&#9660;</span>
       </div>
       {isHovered && (
