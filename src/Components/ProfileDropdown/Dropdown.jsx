@@ -3,6 +3,7 @@ import './Dropdown.css'
 import { auth, db } from '../../Components/Firebase/firebase';
 import {doc, getDoc} from "firebase/firestore"
 import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 
 function Dropdown() {
     const [isHovered, setIsHovered] = useState(false);
@@ -27,8 +28,7 @@ function Dropdown() {
 
   async function handleLogout() {
     try{
-
-      await auth.signOut;
+      await auth.signOut();
       navigate("/login");
       console.log("User logged out successfully");
     }
@@ -48,7 +48,7 @@ function Dropdown() {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="profile-name">
-        <h4 className="user-name">{userDetails ? userDetails.firstName : ""}</h4>
+        <h3 className="user-name">{userDetails ? userDetails.firstName : ""}</h3>
         <span className="arrow">&#9660;</span>
       </div>
       {isHovered && (

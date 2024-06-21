@@ -49,14 +49,14 @@ function Header() {
     <>
     <div className='header'>
     <div className="headerLeft">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <p className='logo'>Film <br /> Fanatics <br /> Hub</p>
         </Link>
     </div>
 
       
       <div className={`headerRight ${isOpen ? 'open' : ''}`}>
-        <Link to="/" style={{ textDecoration: "none" }}><span>Home</span></Link>
+        <Link to="/home" style={{ textDecoration: "none" }}><span>Home</span></Link>
         <Link to="/movies/popular" style={{ textDecoration: "none" }}><span>Popular</span></Link>
         <Link to="/movies/top_rated" style={{ textDecoration: "none" }}><span>Top Rated</span></Link>
         <Link to="/movies/upcoming" style={{ textDecoration: "none" }}><span>Upcoming</span></Link>

@@ -23,26 +23,38 @@ function App() {
     //   setUser(user);
     // })
 
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in
+    // const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //   if (user) {
+    //     // User is signed in
+    //     setUser(user);
+    //   } else {
+    //     // User is signed out
+    //     setUser(null);
+    //   }
+    // });
+
+    // // Cleanup subscription on unmount
+    // return () => unsubscribe();
+
+    onAuthStateChanged(auth, (user) => {
+      if(user){
+        // Yes, you are logged in
         setUser(user);
-      } else {
-        // User is signed out
+      }
+      else{
+        // User is logged out
+        console.log("You are logged out");
         setUser(null);
       }
-    });
-
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
-  })
+    })
+  }, [])
 
   return (
     <>
       <Router>
         
         <Routes>
-          <Route path="/" element={<Login />}/>
+          <Route path="/" element={user ? <Home/> : <Login />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/home" element={<Home />}/>
