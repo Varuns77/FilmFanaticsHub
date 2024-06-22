@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Login.css'
 import {auth} from '../../Components/Firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
 
@@ -65,7 +65,8 @@ function Login() {
 		<div className="line"></div>
 		
 		<p className="signup">Don't have an account? &nbsp;
-		<a href="/register" className="signup-link"> Sign up</a>
+		{/* <a href="/register" className="signup-link"> Sign up</a> */}
+		<Link to="/register" className="signup-link"> Sign up</Link>
 	    </p>
 	
 	
