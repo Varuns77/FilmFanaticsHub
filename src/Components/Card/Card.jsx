@@ -42,9 +42,10 @@ function Card({ movie }) {
           <div className="res-card">
             <img
               className="res-logo"
-              src={`https://image.tmdb.org/t/p/original${
-                movie ? movie.poster_path : ""
-              }`}
+              src={`https://image.tmdb.org/t/p/original${movie ? movie.poster_path : ""}`}
+              // {movie && movie.poster_path 
+              //   ? `https://image.tmdb.org/t/p/original${movie.poster_path}` 
+              //   : ""}
             />
 
             <div className="card-content">

@@ -52,6 +52,7 @@ function Home() {
       <div className="poster">
         <Carousel
           showThumbs={false}
+          showIndicators={false}
           autoPlay={true}
           transitionTime={3}
           infiniteLoop={true}

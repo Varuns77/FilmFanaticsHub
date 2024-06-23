@@ -10,7 +10,7 @@
 
 .posterImage-overlay {
     position: absolute;
-    padding: 5rem;
+    padding: 2rem 5rem;
     bottom: 0px;
     height: 70%;
     display: flex;
@@ -79,7 +79,8 @@
     }
 
     .posterImage-overlay {
-        padding: 3rem;
+        padding: 2rem 3rem;
+       
     }
 
     .posterImage-title {
@@ -92,11 +93,11 @@
 
     .posterImage-description {
         font-size: 0.875rem;
-        width: 60%; /* Adjust width for smaller screens */
+        width: 70%; /* Adjust width for smaller screens */
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .posterImage {
         height: 40vh; /* Adjust height for tablets */
     }
@@ -123,13 +124,16 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 550px) {
     .posterImage {
         height: 30vh; /* Adjust height for mobile devices */
     }
 
     .posterImage-overlay {
         padding: 1rem;
+        position: absolute;
+        bottom: 0px;
+
     }
 
     .posterImage-title {

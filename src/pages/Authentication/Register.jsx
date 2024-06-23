@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { auth, db } from '../../Components/Firebase/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
 
@@ -87,7 +87,7 @@ function Register() {
 	
 	
 	<p className="signup">Already Registered? &nbsp;
-		<a href="/login" className="signup-link">Login</a>
+    <Link to="/login" className="signup-link"> Login</Link>
 	</p>
 </div>
 </div>

@@ -36,7 +36,7 @@ function SearchBar() {
   return (
     <>
     <Header />
-    <div className='wrapper'>
+    {/* <div className='wrapper'>
         <div className="search-bar">
             <input type="text" placeholder='Enter Movie Name' value={input} onChange={(e) => handleChange(e.target.value)}/>
         </div>
@@ -45,7 +45,19 @@ function SearchBar() {
             <Card key={movie.id} movie={movie} />
             ))}
         </div>
+    </div> */}
+
+    <div className="search-container">
+        <div className="search-bar-input">
+            <input type="text" placeholder='Enter Movie Name' value={input} onChange={(e) => handleChange(e.target.value)}/>
+        </div>
     </div>
+
+        <div className="search-result">
+        {movies.map((movie) => (
+            <Card key={movie.id} movie={movie} />
+            ))}
+        </div>
 </>
   )
 }
