@@ -316,6 +316,7 @@
     .movie-detail {
         bottom: 100px;
         padding: 0.5rem;
+        min-width: 300px;
     }
 
     .movie-poster {
@@ -329,12 +330,13 @@
     .video {
         bottom: 90px;
         width: 90%;
+        font-size: 0.8rem;
     }
 
     .cast-details,
     .similar-movies {
         bottom: 70px;
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .movie-name {
