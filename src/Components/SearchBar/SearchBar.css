@@ -35,11 +35,11 @@
     /* margin-left: 5px; */
 
     width: 35%;
-    border-radius: 1rem;
+    border-radius: 2rem;
     border: 1px solid rgb(101, 190, 210);
     outline: 0;
     background-color: #222831;;
-    padding: 0.75rem 2.5rem;
+    padding: 0.75rem 3rem;
     color: rgba(243, 244, 246, 1);
 }
 
