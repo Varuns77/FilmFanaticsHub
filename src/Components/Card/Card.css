@@ -59,7 +59,7 @@
 /* Responsive styles */
 
 /* For tablets and larger devices */
-@media (max-width: 400px) {
+@media (max-width: 440px) {
     .res-card {
       max-width: 200px;
     }
