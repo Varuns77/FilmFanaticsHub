@@ -29,6 +29,7 @@
     border-radius: 2%;
     margin: 1rem;
     transition: all 0.2s ease-in-out;
+    position: relative;
 }
 
 .res-card:hover {
@@ -39,9 +40,16 @@
     /* box-shadow: rgba(225, 214, 214, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
 }
 
+.xyz{
+  
+}
+
 .res-logo{
-    width: 100%;
+    width: 263px;
+    height: 394px;
+    /* width: 100%; */
     border-radius: 5%;
+    /* z-index: 1; */
 }
 
 .card-movie-details{
@@ -54,6 +62,26 @@
 .card-movie-genres{
   font-size: .8rem;
   padding: 5px;
+}
+
+.checklist-icon {
+  /* position: absolute;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll; */
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  /* display: flex;
+  align-items: flex-end;
+  justify-content: flex-end; */
+}
+
+.checklist-icon:hover{
+  color: red;
+  cursor: pointer;
 }
 
 /* Responsive styles */
