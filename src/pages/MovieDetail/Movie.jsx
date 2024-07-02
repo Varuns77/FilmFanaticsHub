@@ -129,7 +129,7 @@ const Movie = () => {
 
             <div className="video">
                 <h1>Trailer</h1>
-                {video && <YouTube videoId={video.key} opts={{height: '500', width: '900'}} />}
+                {video && <YouTube videoId={video.key} opts={{height: '500', width: '700'}} />}
             </div>
 
             <div className="cast-details">

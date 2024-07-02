@@ -74,14 +74,15 @@
   top: 0;
   right: 0;
   z-index: 1;
+  font-size: 1.4rem;
   /* display: flex;
   align-items: flex-end;
   justify-content: flex-end; */
 }
 
 .checklist-icon:hover{
-  color: red;
-  cursor: pointer;
+  /* color: rgb(30, 34, 105); */
+  /* color:  #42d392; */
 }
 
 /* Responsive styles */

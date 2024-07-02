@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, updateDoc, getDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db, auth } from "../Firebase/firebase";
 
-function Card({ movie }) {
+function Card({ movie, removeFromWatchlist }) {
   const apiKey = import.meta.env.VITE_API_KEY;
-
   const [genres, setGenres] = useState([]);
+  const [clickedWatchlist, setClickedWatchlist] = useState(false);
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -25,6 +25,28 @@ function Card({ movie }) {
     fetchMovieData();
   }, []);
 
+  useEffect(() => {
+    const checkWatchlist = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = doc(db, "Users", user.uid);
+        try {
+          const userDoc = await getDoc(userRef);
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            if (data.watchlist && data.watchlist.includes(movie.id)) {
+              setClickedWatchlist(true);
+            }
+          }
+        } catch (error) {
+          console.error("Error fetching watchlist: ", error);
+        }
+      }
+    };
+
+    checkWatchlist();
+  }, [movie.id])
+
   const formatDate = (dateString) => {
     const dateObject = new Date(dateString);
     const formattedDate = new Intl.DateTimeFormat("en-US", {
@@ -35,22 +57,32 @@ function Card({ movie }) {
     return formattedDate;
   };
 
-  const addMovieToWatchlist = async (e) => {
+  const toggleWatchlist = async (e) => {
     e.preventDefault();
-
-    // console.log(e.target);
-    // console.log("Added");
     const user = auth.currentUser;
     if (user) {
       const userRef = doc(db, "Users", user.uid);
 
       try {
-        await updateDoc(userRef, {
-          watchlist: arrayUnion(movie.id)
-        });
-        console.log("Movie added to watchlist");
+        if (clickedWatchlist) {
+          // Remove from watchlist
+          // await updateDoc(userRef, {
+          //   watchlist: arrayRemove(movie.id),
+          // });
+          console.log("Movie removed from watchlist");
+          // Update local state to remove the movie from UI
+          removeFromWatchlist(movie.id);
+        } else {
+          // Add to watchlist
+          await updateDoc(userRef, {
+            watchlist: arrayUnion(movie.id),
+          });
+          console.log("Movie added to watchlist");
+        }
+        console.log(clickedWatchlist);
+        setClickedWatchlist(!clickedWatchlist);
       } catch (error) {
-        console.error("Error adding movie to watchlist: ", error);
+        console.error("Error updating watchlist: ", error);
       }
     } else {
       console.error("No user is logged in");
@@ -74,8 +106,8 @@ function Card({ movie }) {
           }`}
         />
 
-        <span className="checklist-icon" onClick={addMovieToWatchlist}>
-          <i class="fa-regular fa-bookmark"></i>
+        <span className="checklist-icon" onClick={toggleWatchlist}>
+          <i class={`fa-${clickedWatchlist ? "solid" : "regular"} fa-bookmark`}></i>
         </span>
 
           <div className="card-content">

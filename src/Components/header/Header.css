@@ -5,10 +5,12 @@
     background-color: #191d26;
     max-width: 100%;
     margin-inline: auto;
-    padding-inline: 10px;
+    padding: 0px 60px;
+    /* padding-inline: 10px; */
+    /* padding-block: 10px; */
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -20,40 +22,47 @@
     cursor: pointer;
 }
 
+
+
 .headerRight {
     display: flex;
     align-items: center;
+    gap: 40px;
 }
 
-a > span {
-    margin: 0 30px;
+
+.gradient-text {
+    background: #42d392;
+    background-image: linear-gradient(180deg, #42d392, #647eff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .gradient-background {
+    background: #42d392;
+    background-image: linear-gradient(180deg, #42d392, #647eff);
+    border-radius: 10px;
+    padding: 5px 9px;
     font-size: 1.3rem;
     font-weight: 550;
-    cursor: pointer;
-    background: #42d392;
-    background: linear-gradient(180deg, #42d392, #647eff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+    text-decoration: none;
+  }
 
-a > span:hover {
-    color: white;
-}
-
-.headerLeft .logo {
-    background: #42d392;
-    background: linear-gradient(135deg, #42d392, #647eff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.logo {
     text-align: center;
     font-family: "Abril Fatface", serif;
     font-weight: 400;
     font-style: normal;
+    font-size: 17px;
 }
 
 
 @media (max-width: 768px) {
-
 
     .header{
         flex-direction: row;
@@ -90,7 +99,7 @@ a > span:hover {
         flex-direction: column;
         width: 100%;
         display: none;
-        
+        gap: 10px;
         
     }
 
@@ -99,12 +108,12 @@ a > span:hover {
         flex-direction: column;
         transition: all 0.3s linear;
         transform-origin: 1px;
+        font-size: 1.1rem;
         /* border: 1px solid white; */
     }
 
     .headerRight a > span {
         margin: 10px 0;
-        font-size: 1.1rem;
     }
 }
 

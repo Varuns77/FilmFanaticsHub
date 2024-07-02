@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Dropdown.css'
 import { auth, db } from '../../Components/Firebase/firebase';
 import {doc, getDoc} from "firebase/firestore"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 
 function Dropdown() {
@@ -13,7 +13,7 @@ function Dropdown() {
 
   const fetchUserData = async() => {
     auth.onAuthStateChanged(async (user) => {
-      console.log(user);
+      // console.log(user);
       const docRef = doc(db, "Users", user.uid);
       const docSnap = await getDoc(docRef);
       if(docSnap.exists()){
@@ -53,9 +53,9 @@ function Dropdown() {
       </div>
       {isHovered && (
         <div className="dropdown-content">
-          <a href="#">Checklist</a>
-          {/* <a href="/settings">Settings</a> */}
-          <a onClick={handleLogout}>Logout</a>
+          {/* <a href="#">Checklist</a> */}
+          <Link to="/watchlist" style={{ textDecoration: "none" }}>Watchlist</Link>
+          <Link href="/login" onClick={handleLogout}>Logout</Link>
         </div>
       )}
     </div>
