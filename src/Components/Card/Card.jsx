@@ -96,9 +96,6 @@ function Card({ movie, removeFromWatchlist }) {
           style={{ textDecoration: "none", color: "white" }}
         >
       <div className="res-card">
-        {/* <div className="xyz">
-          
-        </div> */}
         <img
           className="res-logo"
           src={`https://image.tmdb.org/t/p/original${

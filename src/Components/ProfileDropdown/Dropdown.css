@@ -1,7 +1,7 @@
 .profile-dropdown {
     position: relative;
     display: inline-block;
-    margin-left: 20px;
+    /* margin-left: 10px; */
   }
 
   .user-name{
@@ -30,6 +30,8 @@
     display: flex;
     flex-direction: column;
     position: absolute;
+    border-radius: 10px;
+    font-size: 18px;
     top: 100%;
     right: 0;
     /* background-color: white; */

@@ -20,9 +20,7 @@ function Header() {
             to="/home"
             className={" logo gradient-text "}
           >
-            
-              Film <br /> Fanatics <br /> Hub
-            
+              Film <br /> Fanatics <br /> Hub 
           </NavLink>
         </div>
 

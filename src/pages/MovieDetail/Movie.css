@@ -204,7 +204,9 @@
     }
 
     .movie-genres{
-        font-size: 15px;
+        font-size: 13px;
+        gap: 5px;
+        
     }
 
     .movie-detailRightBottom{
@@ -319,6 +321,7 @@
         bottom: 100px;
         padding: 0.5rem;
         min-width: 300px;
+        min-height: 800px;
         /* max-height: 200px; 
         overflow-y: auto; */
     }

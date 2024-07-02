@@ -49,7 +49,7 @@ function SearchBar() {
 
     <div className="search-container">
         <div className="search-bar-input">
-            <i className="fa-solid fa-magnifying-glass"></i>
+            {/* <i className="fa-solid fa-magnifying-glass search-icon"></i> */}
             <input type="text" placeholder='Enter Movie Name' value={input} onChange={(e) => handleChange(e.target.value)}/>
         </div>
     </div>
