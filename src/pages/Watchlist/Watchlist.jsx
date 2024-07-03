@@ -4,6 +4,7 @@ import { db, auth } from "../../Components/Firebase/firebase";
 import Header from "../../Components/header/Header";
 import Card from "../../Components/Card/Card";
 import Loader from "../../Components/Loader/Loader";
+import toast, { Toaster } from 'react-hot-toast';
 
 export const Watchlist = () => {
   const [watchlist, setWatchlist] = useState([]);
@@ -11,6 +12,8 @@ export const Watchlist = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const apiKey = import.meta.env.VITE_API_KEY;
+
+  const RemoveMov = () => toast.success('Movie removed');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -81,6 +84,7 @@ export const Watchlist = () => {
           watchlist: arrayRemove(movieId),
         });
 
+        RemoveMov();
         // Update local state to remove the movie from UI
         setMovies((prevMovies) =>
           prevMovies.filter((movie) => movie.id !== movieId)
@@ -103,12 +107,15 @@ export const Watchlist = () => {
       ) : (
         <>
           <div className="movie-list">
-            <h2 className="list-title">Watchlist</h2>  
-            <div className="list-cards">
+            <h2 className="list-title">Watchlist</h2>
+            <Toaster />
+            {movies.length !== 0 ? <>
+              <div className="list-cards">
               {movies.map((movie) => (
                 <Card key={movie.id} movie={movie} removeFromWatchlist={removeFromWatchlist}/>
               ))}
             </div>
+            </> : <h2 style={{textAlign: "center"}}>Add your favourite movies here</h2>}  
           </div>
         </>
       )}

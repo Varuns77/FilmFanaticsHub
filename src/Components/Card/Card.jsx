@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Card.css";
 import { doc, updateDoc, getDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db, auth } from "../Firebase/firebase";
+import toast, { Toaster } from 'react-hot-toast';
 
 function Card({ movie, removeFromWatchlist }) {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -57,6 +58,9 @@ function Card({ movie, removeFromWatchlist }) {
     return formattedDate;
   };
 
+  const AddedMov = () => toast.success('Movie added');
+  const RemoveMov = () => toast.success('Movie removed');
+
   const toggleWatchlist = async (e) => {
     e.preventDefault();
     const user = auth.currentUser;
@@ -65,21 +69,18 @@ function Card({ movie, removeFromWatchlist }) {
 
       try {
         if (clickedWatchlist) {
-          // Remove from watchlist
-          // await updateDoc(userRef, {
-          //   watchlist: arrayRemove(movie.id),
-          // });
           console.log("Movie removed from watchlist");
-          // Update local state to remove the movie from UI
           removeFromWatchlist(movie.id);
+          RemoveMov();
         } else {
           // Add to watchlist
           await updateDoc(userRef, {
             watchlist: arrayUnion(movie.id),
           });
           console.log("Movie added to watchlist");
+          AddedMov();
         }
-        console.log(clickedWatchlist);
+        
         setClickedWatchlist(!clickedWatchlist);
       } catch (error) {
         console.error("Error updating watchlist: ", error);
@@ -91,6 +92,7 @@ function Card({ movie, removeFromWatchlist }) {
 
   return (
     <>
+    <Toaster />
     <Link
           to={`/movie/${movie.id}`}
           style={{ textDecoration: "none", color: "white" }}
@@ -116,7 +118,7 @@ function Card({ movie, removeFromWatchlist }) {
             }
 
             <div className="card-movie-details">
-              <p style={{ fontSize: ".8rem" }}>
+              <p>
                 {movie.release_date.length !== 0
                   ? formatDate(movie.release_date)
                   : ""}

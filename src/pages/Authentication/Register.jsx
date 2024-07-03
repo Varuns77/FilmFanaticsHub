@@ -2,8 +2,8 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react'
 import { auth, db } from '../../Components/Firebase/firebase';
 import { setDoc, doc } from 'firebase/firestore';
-import { ToastContainer, toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Register() {
 
@@ -13,7 +13,7 @@ function Register() {
     const [lname, setLname] = useState("");
     const navigate = useNavigate();
 
-    const notify = () => toast.error("error.message");
+    const RegisterUser = () => toast.success('User has been created');
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -32,23 +32,17 @@ function Register() {
             // toast.success("User is registered successfully", {
             //     position: "top-center",
             // })
-            navigate("/login");
-            // notify();
-            
+            RegisterUser();
+            navigate("/login");    
         }
         catch (error) {
             console.log(error.message);
-            // toast.success(error.message, {
-            //     position: "bottom-center",
-            // })
-            
-            // notify();
-            
         }
     }
 
   return (
     <>
+    <Toaster />
 <div className="authform">
    <div class="form-container">
 	<p class="title">Sign Up</p>

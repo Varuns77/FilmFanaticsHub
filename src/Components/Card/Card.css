@@ -58,7 +58,12 @@
 }
 
 .card-movie-genres{
+  padding: 5px;
+}
+
+.card-movie-genres p{
   font-size: .8rem;
+  
   padding: 5px;
 }
 
@@ -90,14 +95,23 @@
 
 /* Responsive styles */
 
+/* For very large screens */
+
+/* For desktops and larger devices */
+@media (max-width: 992px) {
+  .res-card {
+    max-width: 220px;
+  }
+}
+
 /* For tablets and larger devices */
-@media (max-width: 440px) {
+@media (max-width: 500px) {
     .res-card {
-      max-width: 200px;
+      max-width: 180px;
     }
 
     .card__rating{
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .movie-title {
@@ -105,30 +119,25 @@
       white-space: nowrap;
       overflow: hidden;
       /* padding: 5px; */
+      font-size: 17px;
+    }
+
+    .card-movie-details p{
+      font-size: .7rem;
     }
 
     .card-movie-genres {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      font-size: .8rem;
+      font-size: .7rem;
       padding: 5px;
     }
   }
   
-  /* For desktops and larger devices */
-  @media (min-width: 992px) {
-    .res-card {
-      max-width: 220px;
-    }
-  }
   
-  /* For very large screens */
-  @media (min-width: 1200px) {
-    .res-card {
-      max-width: 250px;
-    }
-  }
+   
+  
   
   /* Adjust text overflow styles */
   .movie-title {

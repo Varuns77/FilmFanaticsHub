@@ -3,6 +3,7 @@ import "./MovieList.css"
 import { useParams } from "react-router-dom"
 import Card from "../Card/Card"
 import Header from "../header/Header"
+import Loader from "../Loader/Loader"
 
 
 const MovieList = ({category}) => {
@@ -10,7 +11,16 @@ const MovieList = ({category}) => {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const [movieList, setMovieList] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
     const {type} = useParams()
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+    
+        return () => clearTimeout(timer);
+      }, []);
 
     // useEffect(() => {
     //     getData()
@@ -53,13 +63,15 @@ const MovieList = ({category}) => {
             <Header />
             <div className="movie-list">
                 <h2 className="list-title">{(type ? type : category).toUpperCase().replace(/_/g, " ")}</h2>
+                {isLoading ? <Loader /> : <>
                 <div className="list-cards">
                 {
                     movieList.map(movie => (
                         <Card key={movie.id} movie={movie} />                        
-                        ))
+                    ))
                     }
                 </div>
+                </>}
             </div>
             </>}
         </div>

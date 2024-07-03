@@ -97,7 +97,7 @@
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
     .posterImage {
         height: 40vh; /* Adjust height for tablets */
     }
@@ -145,15 +145,15 @@
     }
 
     .posterImage-description {
-        font-size: 0.625rem;
-        width: 80%; /* Adjust width for mobile devices */
-        /* height: 50%; */
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
+        display: none;
     }
 
     .posterImage-rating {
         margin-left: 0.5rem;
+        font-size: 12px;
+    }
+
+    .posterImage-runtime{
+        font-size: 12px;
     }
 }
