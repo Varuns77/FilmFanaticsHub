@@ -26,6 +26,8 @@ function Card({ movie, removeFromWatchlist }) {
     fetchMovieData();
   }, []);
 
+  console.log(removeFromWatchlist);
+
   useEffect(() => {
     const checkWatchlist = async () => {
       const user = auth.currentUser;
@@ -70,7 +72,9 @@ function Card({ movie, removeFromWatchlist }) {
       try {
         if (clickedWatchlist) {
           console.log("Movie removed from watchlist");
+          console.log(movie.id);
           removeFromWatchlist(movie.id);
+          console.log(removeFromWatchlist(movie.id));
           RemoveMov();
         } else {
           // Add to watchlist

@@ -98,6 +98,8 @@ export const Watchlist = () => {
       console.error("No user is logged in");
     }
   };
+
+  console.log(removeFromWatchlist);
   
   return (
     <>
