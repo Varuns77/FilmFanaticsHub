@@ -83,7 +83,7 @@ export const Watchlist = () => {
         await updateDoc(userRef, {
           watchlist: arrayRemove(movieId),
         });
-
+        console.log(user);
         RemoveMov();
         // Update local state to remove the movie from UI
         setMovies((prevMovies) =>

@@ -42,7 +42,7 @@ const MovieList = ({category}) => {
     }
 
     const removeFromWatchlist = (movieId) => {
-        console.log("Removed");
+        console.log("Movie List Component");
     }
 
     return (
@@ -67,7 +67,7 @@ const MovieList = ({category}) => {
                 <div className="list-cards">
                 {
                     movieList.map(movie => (
-                        <Card key={movie.id} movie={movie} />                        
+                        <Card key={movie.id} movie={movie} removeFromWatchlist={removeFromWatchlist}/>                        
                     ))
                     }
                 </div>
