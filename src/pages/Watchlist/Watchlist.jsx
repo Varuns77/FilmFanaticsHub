@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { arrayRemove, doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../../Components/Firebase/firebase";
 import Header from "../../Components/header/Header";
 import Card from "../../Components/Card/Card";
@@ -13,7 +13,7 @@ export const Watchlist = () => {
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  const RemoveMov = () => toast.success('Movie removed');
+  // const RemoveMov = () => toast.success('Movie removed');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -59,6 +59,7 @@ export const Watchlist = () => {
           const response = await fetch(
             `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
           );
+          console.log(movieId);
           return response.json();
         })
       );
@@ -73,33 +74,7 @@ export const Watchlist = () => {
     }
   }, [watchlist]);
 
-  const removeFromWatchlist = async (movieId) => {
-    const user = auth.currentUser;
-    if (user) {
-      const userRef = doc(db, "Users", user.uid);
-
-      try {
-        // Remove movieId from watchlist array in Firestore
-        await updateDoc(userRef, {
-          watchlist: arrayRemove(movieId),
-        });
-        console.log(user);
-        RemoveMov();
-        // Update local state to remove the movie from UI
-        setMovies((prevMovies) =>
-          prevMovies.filter((movie) => movie.id !== movieId)
-        );
-
-        console.log("Movie removed from watchlist");
-      } catch (error) {
-        console.error("Error removing movie from watchlist: ", error);
-      }
-    } else {
-      console.error("No user is logged in");
-    }
-  };
-
-  console.log(removeFromWatchlist);
+  
   
   return (
     <>
@@ -114,7 +89,7 @@ export const Watchlist = () => {
             {movies.length !== 0 ? <>
               <div className="list-cards">
               {movies.map((movie) => (
-                <Card key={movie.id} movie={movie} removeFromWatchlist={removeFromWatchlist}/>
+                <Card key={movie.id} movieId={movie.id} movie={movie} setMovies={setMovies}/>
               ))}
             </div>
             </> : <h2 style={{textAlign: "center"}}>Add your favourite movies here</h2>}  

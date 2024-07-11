@@ -10,7 +10,7 @@ import Register from "./pages/Authentication/Register"
 import { useEffect, useState } from "react"
 import { auth } from './Components/Firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { ToastContainer } from "react-toastify"
+// import { ToastContainer } from "react-toastify"
 import SearchBar from "./Components/SearchBar/SearchBar"
 import { Watchlist } from "./pages/Watchlist/Watchlist"
 
@@ -65,7 +65,7 @@ function App() {
           <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
       </Router>
-        <ToastContainer />
+        {/* <ToastContainer /> */}
     </>
   )
 }

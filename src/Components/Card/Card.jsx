@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
-import { doc, updateDoc, getDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import {
+  doc,
+  updateDoc,
+  getDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 import { db, auth } from "../Firebase/firebase";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
-function Card({ movie, removeFromWatchlist }) {
+function Card({ movie, setMovies, movieId }) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [genres, setGenres] = useState([]);
   const [clickedWatchlist, setClickedWatchlist] = useState(false);
@@ -26,7 +32,7 @@ function Card({ movie, removeFromWatchlist }) {
     fetchMovieData();
   }, []);
 
-  console.log(removeFromWatchlist);
+  // console.log(removeFromWatchlist);
 
   useEffect(() => {
     const checkWatchlist = async () => {
@@ -48,7 +54,7 @@ function Card({ movie, removeFromWatchlist }) {
     };
 
     checkWatchlist();
-  }, [movie.id])
+  }, [movie.id]);
 
   const formatDate = (dateString) => {
     const dateObject = new Date(dateString);
@@ -60,8 +66,8 @@ function Card({ movie, removeFromWatchlist }) {
     return formattedDate;
   };
 
-  const AddedMov = () => toast.success('Movie added');
-  const RemoveMov = () => toast.success('Movie removed');
+  const AddedMov = () => toast.success("Movie added");
+  const RemoveMov = () => toast.success("Movie removed");
 
   const toggleWatchlist = async (e) => {
     e.preventDefault();
@@ -71,11 +77,22 @@ function Card({ movie, removeFromWatchlist }) {
 
       try {
         if (clickedWatchlist) {
-          console.log("Movie removed from watchlist");
-          console.log(movie.id);
-          removeFromWatchlist(movie.id);
-          console.log(removeFromWatchlist(movie.id));
-          RemoveMov();
+          try {
+            // Remove movieId from watchlist array in Firestore
+            await updateDoc(userRef, {
+              watchlist: arrayRemove(movie.id),
+            });
+            // Update local state to remove the movie from UI
+            setMovies((prevMovies) =>
+              prevMovies.filter((movie) => movie.id !== movieId)
+            );
+            RemoveMov();
+
+            console.log("Movie removed from watchlist");
+          } catch (error) {
+            console.error("Error removing movie from watchlist: ", error);
+          }
+          // RemoveMov();
         } else {
           // Add to watchlist
           await updateDoc(userRef, {
@@ -84,7 +101,7 @@ function Card({ movie, removeFromWatchlist }) {
           console.log("Movie added to watchlist");
           AddedMov();
         }
-        
+
         setClickedWatchlist(!clickedWatchlist);
       } catch (error) {
         console.error("Error updating watchlist: ", error);
@@ -96,22 +113,24 @@ function Card({ movie, removeFromWatchlist }) {
 
   return (
     <>
-    <Toaster />
-    <Link
-          to={`/movie/${movie.id}`}
-          style={{ textDecoration: "none", color: "white" }}
-        >
-      <div className="res-card">
-        <img
-          className="res-logo"
-          src={`https://image.tmdb.org/t/p/original${
-            movie ? movie.poster_path : ""
-          }`}
-        />
+      <Toaster />
+      <Link
+        to={`/movie/${movie.id}`}
+        style={{ textDecoration: "none", color: "white" }}
+      >
+        <div className="res-card">
+          <img
+            className="res-logo"
+            src={`https://image.tmdb.org/t/p/original${
+              movie ? movie.poster_path : ""
+            }`}
+          />
 
-        <span className="checklist-icon" onClick={toggleWatchlist}>
-          <i class={`fa-${clickedWatchlist ? "solid" : "regular"} fa-bookmark`}></i>
-        </span>
+          <span className="checklist-icon" onClick={toggleWatchlist}>
+            <i
+              class={`fa-${clickedWatchlist ? "solid" : "regular"} fa-bookmark`}
+            ></i>
+          </span>
 
           <div className="card-content">
             <h3 className="movie-title">{movie ? movie.original_title : ""}</h3>
@@ -136,8 +155,8 @@ function Card({ movie, removeFromWatchlist }) {
               </span>
             </div>
           </div>
-      </div>
-        </Link>
+        </div>
+      </Link>
     </>
   );
 }

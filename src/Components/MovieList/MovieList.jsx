@@ -41,7 +41,7 @@ const MovieList = ({category}) => {
         .then(data => setMovieList(data.results))
     }
 
-    const removeFromWatchlist = (movieId) => {
+    const setMovies = () => {
         console.log("Movie List Component");
     }
 
@@ -54,7 +54,7 @@ const MovieList = ({category}) => {
                 <div className="movie-slider">
                     {
                         movieList.slice(0,10).map(movie => (
-                            <Card key={movie.id} movie={movie} removeFromWatchlist={removeFromWatchlist}/>                        
+                            <Card key={movie.id} movie={movie} setMovies={setMovies}/>                        
                         ))
                     }
                 </div>
@@ -67,7 +67,7 @@ const MovieList = ({category}) => {
                 <div className="list-cards">
                 {
                     movieList.map(movie => (
-                        <Card key={movie.id} movie={movie} removeFromWatchlist={removeFromWatchlist}/>                        
+                        <Card key={movie.id} movie={movie} setMovies={setMovies}/>                        
                     ))
                     }
                 </div>
