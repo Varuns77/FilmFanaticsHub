@@ -242,7 +242,7 @@
 
     .movie-detail {
         flex-direction: column;
-        height: auto;
+        min-height: 760px;
     }
 
     
