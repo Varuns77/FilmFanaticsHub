@@ -4,13 +4,13 @@ import { useParams } from "react-router-dom"
 import Card from "../Card/Card"
 import Header from "../header/Header"
 import Loader from "../Loader/Loader"
+import useFetchApi from "../../hooks/useFetchApi"
 
 
 const MovieList = ({category}) => {
     
     const apiKey = import.meta.env.VITE_API_KEY;
 
-    const [movieList, setMovieList] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const {type} = useParams()
 
@@ -26,24 +26,23 @@ const MovieList = ({category}) => {
     //     getData()
     // }, [])
 
-    // if(type === undefined)
-    //     console.log("YESSSS!!!");
+    // useEffect(() => {
+    //     getData()
+    // }, [type])
 
-    // // console.log(type);
-
-    useEffect(() => {
-        getData()
-    }, [type])
-
-    const getData = () => {
-        fetch(`https://api.themoviedb.org/3/movie/${type ? type : category}?api_key=${apiKey}`)
-        .then(res => res.json())
-        .then(data => setMovieList(data.results))
-    }
+    // const getData = () => {
+    //     fetch(`https://api.themoviedb.org/3/movie/${type ? type : category}?api_key=${apiKey}`)
+    //     .then(res => res.json())
+    //     .then(data => setMovieList(data.results))
+    // }
 
     const setMovies = () => {
         console.log("Movie List Component");
     }
+
+    const { data } = useFetchApi(`https://api.themoviedb.org/3/movie/${type ? type : category}?api_key=${apiKey}`)
+
+    const movieList = data?.results
 
     return (
         <>
@@ -53,7 +52,7 @@ const MovieList = ({category}) => {
                 <h2 className="type-title">{(type ? type : category).toUpperCase().replace(/_/g, " ")}</h2>
                 <div className="movie-slider">
                     {
-                        movieList.slice(0,10).map(movie => (
+                        movieList?.slice(0,10).map(movie => (
                             <Card key={movie.id} movie={movie} setMovies={setMovies}/>                        
                         ))
                     }
@@ -66,7 +65,7 @@ const MovieList = ({category}) => {
                 {isLoading ? <Loader /> : <>
                 <div className="list-cards">
                 {
-                    movieList.map(movie => (
+                    movieList?.map(movie => (
                         <Card key={movie.id} movie={movie} setMovies={setMovies}/>                        
                     ))
                     }

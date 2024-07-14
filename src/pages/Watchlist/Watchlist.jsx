@@ -13,8 +13,6 @@ export const Watchlist = () => {
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  // const RemoveMov = () => toast.success('Movie removed');
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -73,8 +71,6 @@ export const Watchlist = () => {
       setMovies([]);
     }
   }, [watchlist]);
-
-  
   
   return (
     <>

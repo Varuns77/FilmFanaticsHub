@@ -10,29 +10,18 @@ import {
 } from "firebase/firestore";
 import { db, auth } from "../Firebase/firebase";
 import toast, { Toaster } from "react-hot-toast";
+import useFetchApi from "../../hooks/useFetchApi";
 
 function Card({ movie, setMovies, movieId }) {
+
   const apiKey = import.meta.env.VITE_API_KEY;
-  const [genres, setGenres] = useState([]);
+
   const [clickedWatchlist, setClickedWatchlist] = useState(false);
 
-  useEffect(() => {
-    const fetchMovieData = async () => {
-      try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}`
-        );
-        const Data = await response.json();
-        setGenres(Data?.genres?.slice(0, 3));
-      } catch (error) {
-        console.error("Error fetching movie data:", error);
-      }
-    };
+  const { data } = useFetchApi(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}`)
 
-    fetchMovieData();
-  }, []);
-
-  // console.log(removeFromWatchlist);
+  const genres = data?.genres?.slice(0, 3) || [];
+  // console.log(genres);
 
   useEffect(() => {
     const checkWatchlist = async () => {

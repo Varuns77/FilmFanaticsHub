@@ -29,9 +29,6 @@ function Register() {
                 })
             }
             console.log("User is registered successfully");
-            // toast.success("User is registered successfully", {
-            //     position: "top-center",
-            // })
             RegisterUser();
             navigate("/login");    
         }

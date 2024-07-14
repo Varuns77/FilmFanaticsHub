@@ -19,24 +19,6 @@ function App() {
   const[user, setUser] = useState();
 
   useEffect(() => {
-    // auth.onAuthStateChanged((user) => {
-    //   console.log(user);
-    //   setUser(user);
-    // })
-
-    // const unsubscribe = onAuthStateChanged(auth, (user) => {
-    //   if (user) {
-    //     // User is signed in
-    //     setUser(user);
-    //   } else {
-    //     // User is signed out
-    //     setUser(null);
-    //   }
-    // });
-
-    // // Cleanup subscription on unmount
-    // return () => unsubscribe();
-
     onAuthStateChanged(auth, (user) => {
       if(user){
         // Yes, you are logged in
@@ -53,7 +35,6 @@ function App() {
   return (
     <>
       <Router>
-        
         <Routes>
           <Route path="/" element={user ? <Navigate to="/home"/> : <Login />}/>
           <Route path="/login" element={<Login />}/>

@@ -7,10 +7,11 @@ import MovieList from "../Components/MovieList/MovieList";
 import { ThreeDots } from 'react-loader-spinner'
 import Loader from "../Components/Loader/Loader";
 import Header from "../Components/header/Header";
+import useFetchApi from "../hooks/useFetchApi";
 
 function Home() {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const [popularMovies, setPopularMovies] = useState([]);
+  
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,20 +20,10 @@ function Home() {
     }, 1000);
   }, []);
 
-  useEffect(() => {
-    getPopular();
-  }, []);
+  const { data } = useFetchApi(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US`)
 
-  const getPopular = async () => {
-    const api = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US`
-    );
-    const data = await api.json();
-    setPopularMovies(data.results);
-    // console.log(data.results);
-  };
-
-  // const get
+  const popularMovies = data.results || [];
+  // console.log(popularMovies);
 
   // Function to format date
   const formatDate = (dateString) => {
