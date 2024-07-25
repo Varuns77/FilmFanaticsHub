@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 import './Cast.css'
+// import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Sliders } from '../Slider/Sliders';
 
 function Cast() {
 
@@ -23,39 +27,87 @@ function Cast() {
         // console.log(data?.crew);
     }
 
-    
+    var settings = {
+      // dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 5,
+      slidesToScroll: 5,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            infinite: true,
+            // dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            initialSlide: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }
+      ]
+  
+    };
 
+    // console.log(castDetails);
   return (
-    
     <div className="cast-slider">
-      {   
-                        castDetails.map(cast => (
-                                  <div className="castImage">
-                                    <img src={ cast && cast.profile_path ? `https://image.tmdb.org/t/p/original${cast.profile_path}` : 'https://via.placeholder.com/200x300'} width="200" height="250" />
-                                    <p>{cast && cast.name}</p>
-                                    <p>as</p>
-                                    <h4 style={{textWrap: "wrap"}}>{cast && cast.character}</h4>
-                                  </div>
-                            ))
-                        }                
-
-    {/* <Carousel
-                    showThumbs={false}
-                    autoPlay={true}
-                    transitionTime={3}
-                    infiniteLoop={true}
-                    showStatus={false}
-                >
-                    {
-                        castDetails.map(cast => (
-                                  <div className="castImage">
-                                    <img src={`https://image.tmdb.org/t/p/original${cast && cast.profile_path}`} width="500" height="300"/>
-                                  </div>
-                            
-                            ))
-                        }
-    </Carousel> */}
+    <Sliders>
+      {
+        castDetails.map(cast => (
+                                        <div className="castImage">
+                                          <img src={ cast && cast.profile_path ? `https://image.tmdb.org/t/p/original${cast.profile_path}` : 'https://via.placeholder.com/200x300'} width="200" height="250" />
+                                          <p>{cast && cast.name}</p>
+                                          <p>as</p>
+                                          <h4 style={{ wordWrap: 'break-word' }}>{cast && cast.character}</h4>
+                                        </div>
+                                  ))
+      }
+    </Sliders>
     </div>
+    
+    // <div className="cast-slider">
+    //   {   
+    //                     castDetails.map(cast => (
+    //                               <div className="castImage">
+    //                                 <img src={ cast && cast.profile_path ? `https://image.tmdb.org/t/p/original${cast.profile_path}` : 'https://via.placeholder.com/200x300'} width="200" height="250" />
+    //                                 <p>{cast && cast.name}</p>
+    //                                 <p>as</p>
+    //                                 <h4 style={{textWrap: "wrap"}}>{cast && cast.character}</h4>
+    //                               </div>
+    //                         ))
+    //                     }                
+
+    // {/* <Carousel
+    //                 showThumbs={false}
+    //                 autoPlay={true}
+    //                 transitionTime={3}
+    //                 infiniteLoop={true}
+    //                 showStatus={false}
+    //             >
+    //                 {
+    //                     castDetails.map(cast => (
+    //                               <div className="castImage">
+    //                                 <img src={`https://image.tmdb.org/t/p/original${cast && cast.profile_path}`} width="500" height="300"/>
+    //                               </div>
+                            
+    //                         ))
+    //                     }
+    // </Carousel> */}
+    // </div>
 
 
     // castDetails.map(cast => {
