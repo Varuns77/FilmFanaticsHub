@@ -27,7 +27,7 @@ function SimilarMovies() {
     <div className="similar-mov-container">
         {
                     similarMov.map(movie => (
-                        <Card key={movie.id} movie={movie} />                        
+                        <Card key={movie.id} movie={movie} className="similarlist-card"/>                        
                     ))
                 }
     </div>

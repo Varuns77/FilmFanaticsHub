@@ -12,7 +12,7 @@ import { db, auth } from "../Firebase/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import useFetchApi from "../../hooks/useFetchApi";
 
-function Card({ movie, setMovies, movieId }) {
+function Card({ movie, setMovies, movieId, className }) {
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -107,12 +107,14 @@ function Card({ movie, setMovies, movieId }) {
         to={`/movie/${movie.id}`}
         style={{ textDecoration: "none", color: "white" }}
       >
-        <div className="res-card">
+        <div className={`res-card ${className}`}>
           <img
             className="res-logo"
-            src={`https://image.tmdb.org/t/p/original${
-              movie ? movie.poster_path : ""
-            }`}
+
+            src={movie && movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : 'https://via.placeholder.com/200x300'}
+            // src={`https://image.tmdb.org/t/p/original${
+            //   movie ? movie.poster_path : ""
+            // }`}
           />
 
           <span className="checklist-icon" onClick={toggleWatchlist}>

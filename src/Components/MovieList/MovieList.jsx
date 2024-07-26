@@ -5,6 +5,9 @@ import Card from "../Card/Card"
 import Header from "../header/Header"
 import Loader from "../Loader/Loader"
 import useFetchApi from "../../hooks/useFetchApi"
+import { Sliders } from "../Slider/Sliders"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 const MovieList = ({category}) => {
@@ -48,16 +51,21 @@ const MovieList = ({category}) => {
         <>
         <div className="main">
             {type===undefined ? 
-            <div className="movie-cards">
+            <>
+            {/* // <div className="movie-cards"> */}
                 <h2 className="type-title">{(type ? type : category).toUpperCase().replace(/_/g, " ")}</h2>
                 <div className="movie-slider">
+                    <Sliders>
                     {
                         movieList?.slice(0,10).map(movie => (
-                            <Card key={movie.id} movie={movie} setMovies={setMovies}/>                        
+                            <Card key={movie.id} movie={movie} setMovies={setMovies} className="slider-card"/>                        
                         ))
                     }
+                    </Sliders>
                 </div>
-            </div> : 
+                </>
+            // </div>
+            : 
             <>
             <Header />
             <div className="movie-list">
@@ -66,7 +74,7 @@ const MovieList = ({category}) => {
                 <div className="list-cards">
                 {
                     movieList?.map(movie => (
-                        <Card key={movie.id} movie={movie} setMovies={setMovies}/>                        
+                        <Card key={movie.id} movie={movie} setMovies={setMovies} className="list-card"/>                        
                     ))
                     }
                 </div>

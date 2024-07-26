@@ -1,39 +1,27 @@
 .movie-cards {
-  /* padding: 0 3rem 3rem 3rem;
-    padding-inline: 20px;
-    white-space: nowrap;
-    overflow: auto;
-    width: 94%;
-    margin: auto; */
-  
-  display: flex;
-  flex-direction: column;
+    width: 95%;
+}
+
+.main{
+  width: 100%;
+  position: relative;
 }
 
 .type-title {
   font-size: 1.75rem;
   font-weight: 700;
-  /* margin:  1.5rem; */
-  margin-inline-start: 2.7rem;
+  margin-inline-start: 7.2rem;
   margin-block-start: 2rem;
   /* background: #42d392; */
   background: linear-gradient(180deg, #42d392, #647eff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* margin-block-end: 1rem; */
-  /* margin-block: 1.5rem; */
+
 }
 
 .movie-slider {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-  width: 94%;
-  align-self: center;
-  /* margin: 0 auto; */
-  /* padding: 0 3rem 3rem 3rem; */
-  /* padding-inline: 20px; */
-  /* justify-content: center; */
+  width: 86%;
+  margin: 0 auto;
 }
 
 .movie-list {
@@ -52,8 +40,31 @@
 }
 
 .list-cards {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 1180px) {
+
+  .type-title{
+    margin-inline-start: 5rem;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .type-title{
+    margin-inline-start: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .type-title{
+    margin-inline-start: 2.5rem;
+    font-size: 1.5rem;
+  }
 }

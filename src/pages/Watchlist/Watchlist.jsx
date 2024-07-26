@@ -85,7 +85,7 @@ export const Watchlist = () => {
             {movies.length !== 0 ? <>
               <div className="list-cards">
               {movies.map((movie) => (
-                <Card key={movie.id} movieId={movie.id} movie={movie} setMovies={setMovies}/>
+                <Card key={movie.id} movieId={movie.id} movie={movie} setMovies={setMovies} className="watchlist-card"/>
               ))}
             </div>
             </> : <h2 style={{textAlign: "center"}}>Add your favourite movies here</h2>}  
