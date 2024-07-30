@@ -4,14 +4,14 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import MovieList from "../Components/MovieList/MovieList";
-import { ThreeDots } from 'react-loader-spinner'
+import { ThreeDots } from "react-loader-spinner";
 import Loader from "../Components/Loader/Loader";
 import Header from "../Components/header/Header";
 import useFetchApi from "../hooks/useFetchApi";
 
 function Home() {
   const apiKey = import.meta.env.VITE_API_KEY;
-  
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -20,7 +20,9 @@ function Home() {
     }, 1000);
   }, []);
 
-  const { data } = useFetchApi(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US`)
+  const { data } = useFetchApi(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US`
+  );
 
   const popularMovies = data.results || [];
   // console.log(popularMovies);
@@ -37,61 +39,65 @@ function Home() {
   };
 
   return (
-    <>{isLoading ? (
-      <Loader />
-      ) : (
     <>
-      <Header />
-      <div className="poster">
-        <Carousel
-          showThumbs={false}
-          showIndicators={false}
-          autoPlay={true}
-          transitionTime={3}
-          infiniteLoop={true}
-          showStatus={false}
-        >
-          {popularMovies.map((movie) => (
-            <Link
-              style={{ textDecoration: "none", color: "white" }}
-              to={`/movie/${movie.id}`}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Header />
+          <div className="poster">
+            <Carousel
+              showThumbs={false}
+              showIndicators={false}
+              autoPlay={true}
+              transitionTime={3}
+              infiniteLoop={true}
+              showStatus={false}
             >
-              <div className="posterImage">
-                <img
-                  src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
-                />
-              </div>
-              <div className="posterImage-overlay">
-                <div className="posterImage-title">
-                  {movie?.original_title}
-                </div>
-                <div className="posterImage-runtime">
-                  {movie?.release_date.length !== 0
-                    ? formatDate(movie.release_date)
-                    : ""}
-                  <span className="posterImage-rating">
-                    {movie?.vote_average.toFixed(1)} 
-                    <i
-                      className="fas fa-star"
-                    />{" "}
-                  </span>
-                </div>
-                <div className="posterImage-description">
-                  {movie?.overview}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </Carousel>
-      </div>
+              {popularMovies.map((movie) => (
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={`/movie/${movie.id}`}
+                >
+                  <div className="posterImage">
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+                    />
+                  </div>
+                  <div className="posterImage-overlay">
+                    <div className="posterImage-title">
+                      {movie?.original_title}
+                    </div>
+                    <div className="posterImage-runtime">
+                      {movie?.release_date.length !== 0
+                        ? formatDate(movie.release_date)
+                        : ""}
+                      <span className="posterImage-rating">
+                        {movie?.vote_average.toFixed(1)}
+                        <i className="fas fa-star" />{" "}
+                      </span>
+                    </div>
+                    <div className="posterImage-description">
+                      {movie?.overview}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </Carousel>
+          </div>
 
-      <div className="home-mov">
-        <MovieList category={"popular"} />
-        <MovieList category={"now_playing"} />
-      </div>
+          <div className="home-mov">
+            <MovieList category={"popular"} />
+            <MovieList category={"now_playing"} />
+          </div>
+
+          <footer className="footer-text">
+            <p>&copy; 2024 Film Fanatics Hub</p>
+            {/* <p>Made by Varun Sharma</p> */}
+          </footer>
+        </>
+      )}
     </>
-  )}
-  </>
   );
 }
 

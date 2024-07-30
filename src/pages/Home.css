@@ -58,6 +58,12 @@
     color: yellow;
 }
 
+.footer-text{
+    background-color: rgb(25, 29, 38);
+    text-align: center;
+}
+
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
     .posterImage-title {
