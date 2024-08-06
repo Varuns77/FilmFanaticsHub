@@ -4,7 +4,6 @@ import Home from './pages/Home'
 import MovieList from './Components/MovieList/MovieList'
 import Movie from './pages/MovieDetail/Movie'
 // import Search from './pages/Search/Search'
-import Home2 from "./pages/Home2"
 import Login from "./pages/Authentication/Login"
 import Register from "./pages/Authentication/Register"
 import { useEffect, useState } from "react"
