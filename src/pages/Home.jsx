@@ -45,6 +45,7 @@ function Home() {
       ) : (
         <>
           <Header />
+          {/* Homepage Carousel */}
           <div className="poster">
             <Carousel
               showThumbs={false}
@@ -85,13 +86,15 @@ function Home() {
               ))}
             </Carousel>
           </div>
-
+          
+          {/* Categories Section */}
           <div className="home-mov">
             <MovieList category={"popular"} />
             <MovieList category={"now_playing"} />
           </div>
 
           <footer className="footer-text">
+            <p>&#128512; Developed By Varun Sharma</p>
             <p>&copy; 2024 Film Fanatics Hub</p>
             {/* <p>Made by Varun Sharma</p> */}
           </footer>
