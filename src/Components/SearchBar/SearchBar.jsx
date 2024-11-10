@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
 import Card from "../Card/Card";
 import Header from "../header/Header";
@@ -8,12 +8,23 @@ function SearchBar() {
   const apiKey = import.meta.env.VITE_API_KEY;
 
   const [input, SetInput] = useState("");
+  const [debouncedInput, setDebouncedInput] = useState("");
+
+   // Debounce effect
+   useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedInput(input);
+    }, 1000); 
+
+    return () => clearTimeout(handler); 
+  }, [input]);
 
   const { data } = useFetchApi(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${input}`)
 
   const movies = data?.results?.filter(
     (movie) =>
-      input && movie.title.toLowerCase().includes(input.toLowerCase())
+      debouncedInput &&
+      movie.title.toLowerCase().includes(debouncedInput.toLowerCase())
   );
 
   const handleChange = (value) => {
