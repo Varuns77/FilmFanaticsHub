@@ -10,22 +10,22 @@ function SearchBar() {
   const [input, SetInput] = useState("");
   const [debouncedInput, setDebouncedInput] = useState("");
 
-   // Debounce effect
-   useEffect(() => {
+  // Debounce effect
+  useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedInput(input);
-    }, 1000); 
+    }, 1000);
 
-    return () => clearTimeout(handler); 
+    return () => clearTimeout(handler);
   }, [input]);
 
-  const { data } = useFetchApi(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${input}`)
-
-  const movies = data?.results?.filter(
-    (movie) =>
-      debouncedInput &&
-      movie.title.toLowerCase().includes(debouncedInput.toLowerCase())
+  const { data } = useFetchApi(
+    debouncedInput
+    ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${debouncedInput}`
+    : null
   );
+
+  const movies = data?.results;
 
   const handleChange = (value) => {
     SetInput(value);
@@ -36,7 +36,7 @@ function SearchBar() {
       <Header />
 
       <div className="search-container">
-        <div class="input-box">
+        <div className="input-box">
           <i className="fa-solid fa-magnifying-glass search-icon"></i>
           <input
             type="text"
@@ -48,9 +48,11 @@ function SearchBar() {
       </div>
 
       <div className="search-result">
-        {movies?.map((movie) => (
-          <Card key={movie.id} movie={movie} className="searchlist-card"/>
-        ))}
+        {movies?.length > 0
+          ? movies.map((movie) => (
+              <Card key={movie.id} movie={movie} className="searchlist-card" />
+            ))
+          : debouncedInput && <p>No results found for "{debouncedInput}"</p>}
       </div>
     </>
   );
